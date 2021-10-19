@@ -1,0 +1,9 @@
+.perfil-img {
+  width: 40px;
+  border-radius: 100px;
+  margin: 0;
+}
+#onlyUser {
+  height: 78vh;
+  overflow-y: scroll;
+}
