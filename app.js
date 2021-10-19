@@ -1,6 +1,3 @@
-/*
-ROBERTO CASTILLO
- */
 
 const botones = document.getElementById("botones")
 const userName = document.getElementById("userName")
@@ -73,9 +70,7 @@ const contenidoChat = (user) => {
       return
     }
   })
-  /*
-     
-   */
+
 
   firebase
     .firestore()
