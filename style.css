@@ -1,9 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+h2{
+   
+  color: white;
+
+}
+nav{
+
+  background-color: #111;
+}
 .perfil-img {
-  width: 40px;
+  width: 30px;
   border-radius: 100px;
   margin: 0;
 }
 #onlyUser {
-  height: 78vh;
+  height: 70vh;
   overflow-y: scroll;
 }
+#onlyUser ::-webkit-scrollbar{
+  -webkit-appearance: none;
+}
+#onlyUser ::-webkit-scrollbar:vertical{
+  width:10px;
+}
+img{
+  width: 50px;
+  border-radius: 50px;
+  margin: 20px;
+}
+/* .foto{
+   border: 50%; 
+} */

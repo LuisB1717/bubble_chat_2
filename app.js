@@ -1,26 +1,22 @@
 
 const botones = document.getElementById("botones")
 const userName = document.getElementById("userName")
-
 const onlyUSER = document.getElementById("onlyUser")
-
 const imgPerfil = document.querySelector(".perfil-img")
-
 const myForm = document.getElementById("myForm")
-
 const inputMensaje = document.getElementById("inputMensaje")
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     botones.innerHTML = /*html*/ `
-    <button id="btnCerrar"  class="btn btn-danger">Cerrar sesion</button>
+    <button id="btnCerrar"  class="btn btn-outline-light">Cerrar sesión</button>
     `
     // User is signed in.
 
     myForm.classList.remove("d-none")
 
     contenidoChat(user)
-    // ...
+    // ...  
     cerrarSesion()
   } else {
     // User is signed out.
@@ -42,7 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
 const contenidoChat = (user) => {
   let displayName = user.displayName
   let userid = user.uid
-  let photoURL = user.photoURL
+  let photoURL= user.photoURL
   userName.textContent = displayName
   const bienvenida = document.createElement("p")
   bienvenida.innerHTML = `<p class="text-center mt-5 lead">Bienvenido ${displayName}</p>`
@@ -58,6 +54,8 @@ const contenidoChat = (user) => {
         .add({
           texto: inputMensaje.value,
           uid: userid,
+          name: user.displayName,
+          img: user.photoURL,
           date: Date.now(),
         })
         .then((res) => {
@@ -82,15 +80,20 @@ const contenidoChat = (user) => {
         console.log(e.data().uid)
         if (e.data().uid === userid) {
           onlyUSER.innerHTML += `<div class="d-flex justify-content-end container">
-          <span class="alert alert-primary">${e.data().texto}</span>
+    
+          <span class="alert alert-primary">Yo:&nbsp;${e.data().texto}</span        
           </div>`
         } else {
           onlyUSER.innerHTML += `<div class="d-flex justify-content-start container">
-          <span class="alert alert-warning">${e.data().texto}</span>
+           
+          <span class="alert alert-secondary">${e.data().name}:&nbsp;${e.data().texto}</span>
           </div>`
           console.log("mensajes")
+      
         }
+        // <img src ="${e.data().img}"></img>
         onlyUSER.scrollTop = onlyUSER.scrollHeight
+        console.log(e.data().texto)
       })
     })
 }
