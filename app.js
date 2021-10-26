@@ -8,25 +8,25 @@ const inputMensaje = document.getElementById("inputMensaje")
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    botones.innerHTML = /*html*/ `
-    <button id="btnCerrar"  class="btn btn-outline-light">Cerrar sesión</button>
+    botones.innerHTML =  `
+    <button id="btnCerrar" class="btn btn-outline-light">
+     Cerrar sesión
+    </button>
+    
     `
-    // User is signed in.
-
     myForm.classList.remove("d-none")
 
     contenidoChat(user)
     // ...  
     cerrarSesion()
   } else {
-    // User is signed out.
-    // ...
-    botones.innerHTML = /*html*/ `
+   
+    botones.innerHTML =  `
     <button id="btnAcceder" type="button" class="btn btn-outline-light">Acceder</button>
     `
     console.clear()
     console.log("no hay usuarios")
-    onlyUSER.innerHTML = /*html*/ `<p class="text-center mt-5 lead">Debes Iniciar Sesion</p>
+    onlyUSER.innerHTML =  `<p class="text-center mt-5 lead">Debes Iniciar Sesion</p>
     `
     imgPerfil.src = ""
     userName.textContent = ""
@@ -44,7 +44,7 @@ const contenidoChat = (user) => {
   bienvenida.innerHTML = `<p class="text-center mt-5 lead">Bienvenido ${displayName}</p>`
   onlyUSER.prepend(bienvenida)
   imgPerfil.src = photoURL
-  //formulario
+  
   myForm.addEventListener("submit", (e) => {
     e.preventDefault()
     if (inputMensaje.value.trim() != "") {
@@ -98,7 +98,7 @@ const contenidoChat = (user) => {
     })
 }
 
-//iniciar sesion
+
 const iniciarSesion = () => {
   let btnAcceder = document.getElementById("btnAcceder")
   btnAcceder.addEventListener("click", async () => {
@@ -111,7 +111,7 @@ const iniciarSesion = () => {
   })
 }
 
-//cerrar sesion
+
 const cerrarSesion = () => {
   let btnCerrar = document.getElementById("btnCerrar")
   btnCerrar.addEventListener("click", () => {
